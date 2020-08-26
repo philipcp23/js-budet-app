@@ -23,12 +23,39 @@ let budgetController = (function() {
            exp: [],
            inc: []
        },
-       total: {
+       totals: {
            exp: 0,
            inc: 0
        }
-    }
-    
+    };
+
+    return {
+        addItem: function(type, des, val) {
+            let newItem, ID;
+            // Create new ID            
+            if(data.allItems[type].length > 0) {
+                ID = data.allItems[type][data.allItems[type].length - 1].id + 1;
+            } else {
+                ID = 0;
+            }                  
+            // Create new item based on type
+            if(type === 'inc') {
+                newItem = new Income(ID, des, val);
+                console.log(type + ' this is the type')
+            } else if(type === 'exp') {
+                newItem = new Expense(ID, des, val);
+            }
+            // Push it into our data structure
+            data.allItems[type].push(newItem);
+            // Return the new element
+            console.log(newItem + ' this is the new item');
+            return newItem;
+        },
+
+        testing: function() {
+            console.log('this is some data ' + data);
+        }
+    };
 })();
 
 
@@ -80,10 +107,12 @@ let appController = (function(budgetCtrl, UICtrl) {
 
 
     let ctrlAddItem = function() {
+        let newItem, input;
         // 1. get the field input data
-        let input = UICtrl.getInput();
-
+        input = UICtrl.getInput();
         // 2. add the item to the budget controller
+        newItem = budgetCtrl.addItem(input.type, input.description, input.value); 
+
         // 3. Add the item to the UI
         // 4. calculate the budget
         // 5. display the budget on the UI
