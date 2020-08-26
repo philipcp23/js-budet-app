@@ -24,3 +24,6 @@ Checkpoints
 - Create simple, reusable function wih only one purpose
 - Sum all elements of an array using the forEach method
 - DOM manipulation by updating the budget and total values
+- Using event delegation in practice
+- Use IDs in HTML to connect the UI wiht the data model
+- How to use the parentNode property for DOM traversing 
