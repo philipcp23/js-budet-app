@@ -34,3 +34,4 @@ Checkpoints
 - Create forEach function but for nodeLists instead of arrays
 - Use different String methods to manipulate strings
 - Get the current date by using the Date object constructor
+- Using change events
