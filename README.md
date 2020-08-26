@@ -1,4 +1,4 @@
-# js-budet-app
+# js-budget-app
 Budget your income and expenses
 
 Checkpoints
