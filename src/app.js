@@ -3,14 +3,28 @@
 */
 
 
-// BUDGET CONTROLLER
+// BUDGET CONTROLLER -------------------------------------------------------------------------
 let budgetController = (function() {
     
     let Expense = function(id, description, value) {
         this.id = id;
         this.description = description;
         this.value = value;
+        this.percentage = -1;
     };
+
+    Expense.prototype.calculatePercentage = function(totalIncome) {
+        if(totalIncome > 0) {
+            this.percentage = Math.round((this.value / totalIncome) * 100);
+        } else {
+            this.percentage = -1;
+        }
+    };
+
+    Expense.prototype.getPercentage = function() {
+        return this.percentage;
+    };
+
     
     let Income = function(id, description, value) {
         this.id = id;
@@ -76,7 +90,6 @@ let budgetController = (function() {
         },
 
         calculateBudget: function () {
-
             // Calculate total income and expenses
             calculateTotal('exp');
             calculateTotal('inc');
@@ -89,9 +102,22 @@ let budgetController = (function() {
                 data.percentage = Math.round((data.totals.exp / data.totals.inc) * 100);
             } else {
                 data.percentage = -1;
-            }
-        
+            }        
         },
+
+        calculatePercentages: function() {
+            data.allItems.exp.forEach(function(cur) {
+                cur.calculatePercentage(data.totals.inc);
+            });            
+        },
+
+        getPercentages: function() {
+            let allPercentages = data.allItems.exp.map(function(cur) {
+                return cur.getPercentage();
+            });
+            return allPercentages
+        },
+
 
         getBudget: function() {
             return {
@@ -112,7 +138,7 @@ let budgetController = (function() {
 
 
 
-// UI CONTROLLER
+// UI CONTROLLER --------------------------------------------------------------------------------------
 let UIController = (function() {
     
     let DOMstrings = {
@@ -205,7 +231,7 @@ let UIController = (function() {
 
 
 
-// GLOBAL APP CONTROLLER
+// GLOBAL APP CONTROLLER --------------------------------------------------------------------------------
 let appController = (function(budgetCtrl, UICtrl) {
     
     let setupEventListeners = function() {
@@ -232,10 +258,20 @@ let appController = (function(budgetCtrl, UICtrl) {
 
         // Display the budget on the UI
         UICtrl.displayBudget(budget);
-
-
-
     }; 
+
+    let updatePercentages = function() {
+
+        // calc percentages
+        budgetCtrl.calculatePercentages();
+        // read percentages from the budget controller
+        let percentages = budgetCtrl.getPercentages();
+        // update the UI with new percentages
+        console.log(percentages);
+
+    };
+
+
     
     let ctrlAddItem = function() {
         let input, newItem;
@@ -255,6 +291,8 @@ let appController = (function(budgetCtrl, UICtrl) {
 
             // 5. Calculate and update budget
             updateBudget();
+            // 6. 
+            updatePercentages();
         }        
     };
 
@@ -267,7 +305,6 @@ let appController = (function(budgetCtrl, UICtrl) {
             splitID = itemID.split('-');
             type = splitID[0];
             ID = parseInt(splitID[1]);
-            console.log('id ~' + ID);
 
             // 1. Delete the item form the data structure
             budgetCtrl.deleteItem(type, ID);
@@ -275,6 +312,8 @@ let appController = (function(budgetCtrl, UICtrl) {
             UICtrl.deleteListItem(itemID);
             // 3. Update and show the new budget
             updateBudget();
+            // 4. 
+            updatePercentages();
         }        
     };
     
