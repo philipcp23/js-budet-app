@@ -19,8 +19,9 @@ Checkpoints
 - Use querySelectorAll
 - Convert a list to an array
 - Using foreach
-
 - Convert field inputs to numbers
 - Prevent false inputs
+- Create simple, reusable function wih only one purpose
+- Sum all elements of an array using the forEach method
 
 
