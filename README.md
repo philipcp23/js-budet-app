@@ -15,6 +15,7 @@ Checkpoints
 - A technique for adding big chunks of HTML into the DOM
 - How to replace parts of strings
 - How to do DOM manipulation using the insertAdjacentHTML method
+
 - How to clear HTML fields
 - How to use querySelectorAll
 - How to convert a list to an array
