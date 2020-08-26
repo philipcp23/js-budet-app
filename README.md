@@ -31,4 +31,4 @@ Checkpoints
 - Remove elements from an array using slice method
 - Remove an element from the DOM
 - Make the budget controller interact with the Expense prototype
-- 
+- Create forEach function but for nodeLists instead of arrays
