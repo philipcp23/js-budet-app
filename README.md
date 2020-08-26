@@ -2,23 +2,25 @@
 Budget your income and expenses
 
 Checkpoints
-- How to use the module pattern
+- Implement Module Pattern
 - Private and public data, encapsulation and separation of concerns
-- How to set up event listeners for keypress events
-- How to use event object
-- How to read data from different HTML input types
-- How and why to create an intialization function
-- How to choose function sonstructors that meet our application's needs
-- How to set up a proper data structure for our budget controller
-- How to avoid conflicts in our data structures
-- How and why to pass data from one module to another
+- Set up event listeners for keypress events
+- Use event object
+- Read data from different HTML input types
+- Create an intialization function
+- Choose function constructors that meet our application's needs
+- Set up a proper data structure for our budget controller
+- Avoid conflicts in our data structures
+- Pass data from one module to another
 - A technique for adding big chunks of HTML into the DOM
-- How to replace parts of strings
-- How to do DOM manipulation using the insertAdjacentHTML method
-
-- How to clear HTML fields
-- How to use querySelectorAll
-- How to convert a list to an array
+- Replace parts of strings
+- DOM manipulation using the insertAdjacentHTML method
+- Clear HTML fields
+- Use querySelectorAll
+- Convert a list to an array
 - Using foreach
+
+- Convert field inputs to numbers
+- Prevent false inputs
 
 
