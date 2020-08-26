@@ -27,3 +27,6 @@ Checkpoints
 - Using event delegation in practice
 - Use IDs in HTML to connect the UI wiht the data model
 - How to use the parentNode property for DOM traversing 
+- Method to loop over an array: map;
+- Remove elements from an array using slice method
+- Remove an element from the DOM
