@@ -23,5 +23,4 @@ Checkpoints
 - Prevent false inputs
 - Create simple, reusable function wih only one purpose
 - Sum all elements of an array using the forEach method
-
-
+- DOM manipulation by updating the budget and total values
